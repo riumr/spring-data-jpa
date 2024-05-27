@@ -1,6 +1,6 @@
 package com.jpaProject.jpa.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,12 +8,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.persistence.TableGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Author {
     @Id
@@ -25,13 +30,12 @@ public class Author {
     private Integer id;
     @Column(name = "f_name",length = 35)
     private String firstName;
-    
     private String lastName;
     @Column(unique=true, nullable = false)
     private String email;
     private int age;
     @Column(updatable = false, nullable = false)
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
     @Column(insertable = false)
-    private LocalDate lastModified;
+    private LocalDateTime lastModified;
 }
