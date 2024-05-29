@@ -15,7 +15,7 @@ public class JpaApplication {
 		SpringApplication.run(JpaApplication.class, args);
 	}
 
-	@Bean
+	// @Bean
 	public CommandLineRunner commandLineRunner(AuthorRepository repository){
 		return args->{
 			var author = Author.builder()
