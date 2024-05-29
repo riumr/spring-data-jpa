@@ -1,12 +1,15 @@
 package com.jpaProject.jpa.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.TableGenerator;
@@ -34,8 +37,10 @@ public class Author {
     @Column(unique=true, nullable = false)
     private String email;
     private int age;
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt;
     @Column(insertable = false)
     private LocalDateTime lastModified;
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 }
