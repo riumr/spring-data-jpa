@@ -21,16 +21,16 @@ public class JpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AuthorRepository repository,VideoRepository videoRepository){
 		return args->{
-			for(int i=0; i<50; i++){
-				Faker faker = new Faker();
-				var author = Author.builder()
-							.firstName(faker.name().firstName())
-							.lastName(faker.name().lastName())
-							.age(faker.number().numberBetween(19, 50))
-							.email("e"+i+"@mail.com")
-							.build();
-				repository.save(author);
-			}
+			// for(int i=0; i<50; i++){
+			// 	Faker faker = new Faker();
+			// 	var author = Author.builder()
+			// 				.firstName(faker.name().firstName())
+			// 				.lastName(faker.name().lastName())
+			// 				.age(faker.number().numberBetween(19, 50))
+			// 				.email("e"+i+"@mail.com")
+			// 				.build();
+			// 	repository.save(author);
+			// }
 			// var video = Video.builder()
 			// 	.name("abc")
 			// 	.length(5)
