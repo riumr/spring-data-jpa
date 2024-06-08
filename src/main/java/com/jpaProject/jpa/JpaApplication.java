@@ -46,7 +46,7 @@ public class JpaApplication {
 			repository.updateAllAuthorsAge(24);
 
 			// find by named query
-			repository.findByNamedQuery(60).forEach(System.out::print());
+			repository.findByNamedQuery(60).forEach(System.out::print);
 		};
 
 	}
