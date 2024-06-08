@@ -41,10 +41,14 @@ public class JpaApplication {
 							.build();
 				// repository.save(author);
 			// update Author set a.age = 25 where a.id = 1
-			repository.updateAuthor(25, 1);
+			// repository.updateAuthor(25, 1);
 			// update Author set a.age = 24
 			repository.updateAllAuthorsAge(24);
+
+			// find by named query
+			repository.findByNamedQuery(60).forEach(System.out::print());
 		};
+
 	}
 
 }
