@@ -43,10 +43,13 @@ public class JpaApplication {
 			// update Author set a.age = 25 where a.id = 1
 			// repository.updateAuthor(25, 1);
 			// update Author set a.age = 24
-			repository.updateAllAuthorsAge(24);
+			// repository.updateAllAuthorsAge(24);
 
 			// find by named query
-			repository.findByNamedQuery(60).forEach(System.out::print);
+			repository.findByNamedQuery(30).forEach(System.out::println);
+
+			// update with named query
+			repository.updateByNamedQuery(40);
 		};
 
 	}

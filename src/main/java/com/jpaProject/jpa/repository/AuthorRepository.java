@@ -13,7 +13,12 @@ import jakarta.transaction.Transactional;
 
 public interface AuthorRepository extends JpaRepository<Author,Integer> {
 
+    @Transactional
     List<Author> findByNamedQuery(@Param("age") int age);
+
+    @Transactional
+    @Modifying
+    void updateByNamedQuery(@Param("age") int age);
 
     // update Author set a.age = :age where a.id = :id
     @Modifying

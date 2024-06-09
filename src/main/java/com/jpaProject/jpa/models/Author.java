@@ -5,7 +5,9 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +21,18 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@NamedQuery(
-    name="Author.findByNamedQuery",
-    query="select a from Author a where a.age >= :age"
+@NamedQueries(
+    {
+        @NamedQuery(
+            name="Author.findByNamedQuery",
+            query="select a from Author a where a.age >= :age"
+        ),
+        
+        @NamedQuery(
+            name="Author.updateByNamedQuery",
+            query="update Author a set a.age = :age"
+        )
+    }
 )
 public class Author extends BaseEntity{
     
@@ -35,6 +46,6 @@ public class Author extends BaseEntity{
     private LocalDateTime createdAt;
     @Column(insertable = false)
     private LocalDateTime lastModified;
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors")
     private List<Course> courses;
 }
