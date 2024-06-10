@@ -1,15 +1,19 @@
 package com.jpaProject.jpa;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 import com.github.javafaker.Faker;
 import com.jpaProject.jpa.models.Author;
 import com.jpaProject.jpa.models.Video;
 import com.jpaProject.jpa.repository.AuthorRepository;
 import com.jpaProject.jpa.repository.VideoRepository;
+import com.jpaProject.jpa.specification.AuthorSpecification;
 
 @SpringBootApplication
 public class JpaApplication {
@@ -46,10 +50,14 @@ public class JpaApplication {
 			// repository.updateAllAuthorsAge(24);
 
 			// find by named query
-			repository.findByNamedQuery(30).forEach(System.out::println);
+			// repository.findByNamedQuery(30).forEach(System.out::println);
 
 			// update with named query
-			repository.updateByNamedQuery(40);
+			// repository.updateByNamedQuery(40);
+			Specification spec = Specification
+				.where(AuthorSpecification.hasAge(23))
+				.or(AuthorSpecification.firstnameLike("Mi"));
+			repository.findAll(spec).forEach(System.out::println);
 		};
 
 	}
